@@ -1,5 +1,5 @@
 # I.F.R. | Inline Frame Rerouter
-Hide your search history and leave your teachers clueless with this bookmarklet! <br>
+Hide your search history and leave your teachers clueless with this multi-tool bookmarklet! <br>
 
 ## 👋 | For Users
 Learn how to effectively use this program and fix common issues.
@@ -13,6 +13,7 @@ Learn how to effectively use this program and fix common issues.
 ### 🪲 Debugging
 * If you see "This content is blocked. Contact the site owner to fix the issue." then that means that website doesn't allow iframes.
 * A good bunch of websites don't allow iframes, so take note of that as you're using IFR.
+* For YouTube links, must should work but if they don't just go to that YouTube video via the internet.
 
 ## 💻 | For Developers 
 My code is pretty much always open source and anyone can copy it, so if you see something you can improve tell me on Discord @thereallyreal!
