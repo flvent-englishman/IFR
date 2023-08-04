@@ -10,7 +10,7 @@ javascript:(
       window.open(newyt);
     } else if (input.startsWith('https://youtu.be')) {
       const yt = input.split('/');
-      const newyt = 'https://www.youtube-nocookie.com/embed/' + yt[2];
+      const newyt = 'https://www.youtube-nocookie.com/embed/' + yt[3];
       window.open(newyt);
     } else if (input.startsWith('http')) {
       iframe.src = input;
