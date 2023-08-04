@@ -19,4 +19,5 @@ Learn how to effectively use this program and fix common issues.
 My code is pretty much always open source and anyone can copy it, so if you see something you can improve tell me on Discord @thereallyreal!
 
 ### 📝 To-Do
-1. Better UI
+1. Make the UI better looking.
+2. Add more features (like tab cloaking).
