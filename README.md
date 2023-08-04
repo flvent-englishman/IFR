@@ -11,7 +11,8 @@ Learn how to effectively use this program and fix common issues.
 4. What's the benefits of using this? Hide your search history and make teachers think you're just on an innocent website.
 
 ### 🪲 Debugging
-* Placeholder
+* If you see "This content is blocked. Contact the site owner to fix the issue." then that means that website doesn't allow iframes.
+* A good bunch of websites don't allow iframes, so take note of that as you're using IFR.
 
 ## 💻 | For Developers 
 My code is pretty much always open source and anyone can copy it, so if you see something you can improve tell me on Discord @thereallyreal!
