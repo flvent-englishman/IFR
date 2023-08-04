@@ -2,7 +2,7 @@
 Hide your search history and leave your teachers clueless with this multi-tool bookmarklet! <br>
 
 ## 👋 | For Users
-Learn how to effectively use this program and fix common issues.
+Go to the 'bookmarklet.js' file and copy everything there. Then paste it into your bookmarks bar by right-clicking on it. You may rename it to whatever you please.
 
 ### ❓ FAQ
 1. Does this unblock websites? No.
