@@ -1,5 +1,5 @@
 # I.F.R. | Inline Frame Rerouter
-Hide your search history and leave your teachers clueless with this multi-tool bookmarklet! <br>
+Hide your search history and from Hapara with this multitool that has a YouTube NC function as well! <br>
 
 ## 👋 | For Users
 Go to the 'bookmarklet.js' file and copy everything there. Create a bookmarklet and paste the coce into the link section, yoi can choose to name it whatever you want. Then clikc on the bookmark whenever you want to use it (doesn't work on non-internet tabs like new tab or settings).
