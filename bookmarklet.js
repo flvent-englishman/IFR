@@ -46,10 +46,16 @@ javascript:(
       let title = prompt('What do you want to rename the tab to?');
       document.title = title;
     }
-    function hover(item) {
+    function hover1(item) {
       item.style.backgroundColor = '#F25022';
     }
-    function unhover(item) {
+    function unhover1(item) {
+      item.style.backgroundColor = '#010101';
+    }
+    function hover2(item) {
+      item.style.backgroundColor = '#737373';
+    }
+    function unhover2(item) {
       item.style.backgroundColor = '#010101';
     }
     function quit() {
@@ -83,8 +89,8 @@ javascript:(
     quitButton.style.border = 'none';
     quitButton.style.boxShadow = '2px 2px 4px #000000';
     quitButton.style.transitionDuration = '0.1s';
-    quitButton.onmouseover = function(){hover(quitButton)};
-    quitButton.onmouseout = function(){unhover(quitButton)};
+    quitButton.onmouseover = function(){hover1(quitButton)};
+    quitButton.onmouseout = function(){unhover1(quitButton)};
     document.body.appendChild(quitButton);
     quitButton.onclick = function(){quit()};
 
@@ -103,8 +109,8 @@ javascript:(
     ncYtButton.style.border = 'none';
     ncYtButton.style.boxShadow = '2px 2px 4px #000000';
     ncYtButton.style.transitionDuration = '0.1s';
-    ncYtButton.onmouseover = function(){hover(ncYtButton)};
-    ncYtButton.onmouseout = function(){unhover(ncYtButton)};
+    ncYtButton.onmouseover = function(){hover2(ncYtButton)};
+    ncYtButton.onmouseout = function(){unhover2(ncYtButton)};
     document.body.appendChild(ncYtButton);
     ncYtButton.onclick = function(){ncYt2()};
 
@@ -123,8 +129,8 @@ javascript:(
     setButton.style.border = 'none';
     setButton.style.boxShadow = '2px 2px 4px #000000';
     setButton.style.transitionDuration = '0.1s';
-    setButton.onmouseover = function(){hover(setButton)};
-    setButton.onmouseout = function(){unhover(setButton)};
+    setButton.onmouseover = function(){hover2(setButton)};
+    setButton.onmouseout = function(){unhover2(setButton)};
     document.body.appendChild(setButton);
     setButton.onclick = function(){settings()};
 
