@@ -19,5 +19,6 @@ Go to the 'bookmarklet.js' file and copy everything there. Then paste it into th
 My code is pretty much always open source and anyone can copy it, so if you see something you can improve tell me on Discord at 'thereallyreal'!
 
 ### 📝 To-Do
-1. Make the UI better looking.
-2. Add more features (like tab cloaking).
+1. Add feature to change tab favicon.
+2. Introduce a ight mode and dark mode.
+3. Keep on adding features...
