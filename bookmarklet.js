@@ -53,7 +53,7 @@ javascript:(
       item.style.backgroundColor = '#010101';
     }
     function hover2(item) {
-      item.style.backgroundColor = '#737373';
+      item.style.backgroundColor = '#0D0D0C';
     }
     function unhover2(item) {
       item.style.backgroundColor = '#010101';
