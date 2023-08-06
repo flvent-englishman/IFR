@@ -16,7 +16,7 @@ Go to the 'bookmarklet.js' file and copy everything there. Then paste it into th
 * For YouTube links, most should work (except for videos with embed disabled) but if they don't just go to that YouTube video via the internet.
 
 ## 💻 | For Developers 
-My code is pretty much always open source and anyone can copy it, so if you see something you can improve tell me on Discord @thereallyreal!
+My code is pretty much always open source and anyone can copy it, so if you see something you can improve tell me on Discord at 'thereallyreal'!
 
 ### 📝 To-Do
 1. Make the UI better looking.
