@@ -2,7 +2,7 @@
 Hide your search history and from Hapara with this multitool that has a YouTube NC function as well! <br>
 
 ## 👋 | For Users
-Go to the 'bookmarklet.js' file and copy everything there. Create a bookmarklet and paste the coce into the link section, yoi can choose to name it whatever you want. Then clikc on the bookmark whenever you want to use it (doesn't work on non-internet tabs like new tab or settings).
+Go to the 'bookmarklet.js' file and copy everything there. Then paste it into the bookmarks bar by right-clicking on it. Many websites don't allow iframes so if it doesn't work try it on another website (Google allows iframes so I like to use it there). Press the X button in the top-left to close the iframe, press the play button to paste a YouTube link to turn it into YouTube NC, allowing you to watch it, and press the pencil button to rename the tab.
 
 ### ❓ FAQ
 1. Does this unblock websites? No.
@@ -12,7 +12,7 @@ Go to the 'bookmarklet.js' file and copy everything there. Create a bookmarklet 
 
 ### 🪲 Debugging
 * If you see "This content is blocked. Contact the site owner to fix the issue." then that means that website doesn't allow iframes.
-* A good bunch of websites don't allow iframes, so take note of that as you're using IFR (I like to use https://www.google.com since they allow iframes).
+* A good bunch of websites don't allow iframes, so take note of that as you're using IFR.
 * For YouTube links, most should work (except for videos with embed disabled) but if they don't just go to that YouTube video via the internet.
 
 ## 💻 | For Developers 
