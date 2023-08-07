@@ -1,8 +1,11 @@
 # I.F.R. | Inline Frame Rerouter
-Hide your search history and from Hapara with this multitool bookmarklet that has many more features! <br>
+Go incognito with this mutlitool bookmarklet that can pretty much never be blocked! <br>
 
 ## 👋 | For Users
-Go to the 'bookmarklet.js' file and copy everything there. Then paste it into the bookmarks bar by right-clicking on it. Many websites don't allow iframes so if it doesn't work try it on another website (Google allows iframes so I like to use it there). Press the X button in the top-left to close the iframe, press the play button to paste a YouTube link to turn it into YouTube NC, allowing you to watch it, and press the pencil button to rename the tab.
+Go to the 'bookmarklet.js' file and copy everything there. Then paste it into the bookmarks bar by right-clicking on it. Note that many websites don't allow iframes so if you're wondering why it doesn't seem to work that's why. Use Google to use IFR since your school most probably hasn't blocked Google.
+![image](https://github.com/TheReallyReal/IFR/assets/141452587/42c5acb2-6391-4b10-a44e-37513161ea3c)
+Press the 'X' button to close IFR, and press the '-' button to minimize IFR in case you want to hide it but also save what you were doing. Finally the '+' button is a dropdown that contains many tools, of which I will be constantly updating and adding more of.
+
 
 ### ❓ FAQ
 1. Does this unblock websites? No.
