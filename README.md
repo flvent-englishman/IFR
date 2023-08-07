@@ -1,5 +1,5 @@
 # I.F.R. | Inline Frame Rerouter
-Hide your search history and from Hapara with this multitool that has a YouTube NC function as well! <br>
+Hide your search history and from Hapara with this multitool bookmarklet that has many more features! <br>
 
 ## 👋 | For Users
 Go to the 'bookmarklet.js' file and copy everything there. Then paste it into the bookmarks bar by right-clicking on it. Many websites don't allow iframes so if it doesn't work try it on another website (Google allows iframes so I like to use it there). Press the X button in the top-left to close the iframe, press the play button to paste a YouTube link to turn it into YouTube NC, allowing you to watch it, and press the pencil button to rename the tab.
