@@ -27,6 +27,6 @@ My code is pretty much always open source and anyone can copy it, so if you see 
 5. Performance boosts, well not really since I've added a lot more code but I shortened variable names and reorganized stuff
 
 ### 📝 To-Do
-1. Introduce a ight mode and dark mode.
-2. Make the coder more beautiful and take up less space.
-3. Keep on adding tools...
+1. Introduce a light mode and dark mode.
+2. Make the code more beautiful-looking and take up less space.
+3. Keep on adding more tools...
