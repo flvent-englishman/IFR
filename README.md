@@ -19,12 +19,12 @@ Press the 'X' button in the top-left to close IFR, and press the '-' button to m
 ## 💻 | For Developers 
 My code is pretty much always open source and anyone can copy it, so if you see something you can improve tell me on Discord at 'thereallyreal'!
 
-### ⭐ Updates (v1.1)
-1. Updated the UI
-2. Added a menu with two new tools (about:blank embedder & history flooder)
-3. Updated the rename tab feature to be able to change the tab favicon too
-4. Some bug fixes
-5. Performance boosts, well not really since I've added a lot more code but I shortened variable names and reorganized stuff
+### ⭐ Updates (v1.2)
+1. The buttons now go translucent when IFR is hovered upon
+2. Added two new tools to the menu (tab cloak & random Wikipedia article)
+3. I added some other things too but I forgot...
+4. A couple of bug fixes
+5. Performance boosts, maybe..?
 
 ### 📝 To-Do
 1. Introduce a light mode and dark mode.
