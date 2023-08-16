@@ -12,7 +12,7 @@ javascript:(
         const btnTC = document.createElement('button');
         const btnHF = document.createElement('button');
         const btnWR = document.createElement('button');
-        const input = prompt('Input a link or leave blank to go search. YouTube links will be automatically converted into YouTube NC.'); 
+        const input = prompt('🖥️ IFR | Input link or leave blank to search.'); 
         if (input == '') {
             ifr.src = 'https://www.google.com/';
         } else if (input.startsWith('https://www.youtube.com/watch?v=' || 'https://youtu.be/')) {
@@ -39,7 +39,9 @@ javascript:(
             if (item == btnX || item == btnMi || item == btnMe || item == Me) {
                 btnX.style.opacity = '1';
                 btnMi.style.opacity = '1';
-                btnMe.style.opacity = '1';
+                if (mzd == false) {
+                    btnMe.style.opacity = '1';
+                }
                 btnX.style.boxShadow = '2px 2px 4px black';
                 btnMi.style.boxShadow = '2px 2px 4px black';
                 btnMe.style.boxShadow = '2px 2px 4px black';
@@ -56,7 +58,9 @@ javascript:(
             if (item == btnX || item == btnMi || item == btnMe || item == Me) {
                 btnX.style.opacity = '0.5';
                 btnMi.style.opacity = '0.5';
-                btnMe.style.opacity = '0.5';
+                if (mzd == false) {
+                    btnMe.style.opacity = '0.5';
+                }
                 btnX.style.boxShadow = 'none';
                 btnMi.style.boxShadow = 'none';
                 btnMe.style.boxShadow = 'none';
@@ -187,8 +191,7 @@ javascript:(
         btnX_s.color = 'white';
         btnX_s.backgroundColor = 'black';
         btnX_s.border = 'none';
-        btnX_s.display = 'none';
-        btnX_s.boxShadow = '2px 2px 4px black';
+        btnX_s.opacity = '0.5';
         btnX_s.transitionDuration = '0.1s';
         const btnMi_s = btnMi.style;
         btnMi.textContent = '–';
@@ -200,12 +203,11 @@ javascript:(
         btnMi_s.left = '0'; 
         btnMi_s.zIndex = '1001';
         btnMi_s.margin = '0.25%';
-        btnMi_s.marginLeft = '2.8%';
+        btnMi_s.marginLeft = '2.75%';
         btnMi_s.color = 'white';
         btnMi_s.backgroundColor = 'black';
         btnMi_s.border = 'none';
-        btnMi_s.display = 'none';
-        btnMi_s.boxShadow = '2px 2px 4px black';
+        btnMi_s.opacity = '0.5';
         btnMi_s.transitionDuration = '0.1s';
         const btnMe_s = btnMe.style;
         btnMe.textContent = '+';
@@ -217,12 +219,11 @@ javascript:(
         btnMe_s.left = '0';
         btnMe_s.zIndex = '1001';
         btnMe_s.margin = '0.25%';
-        btnMe_s.marginLeft = '5.3%';
+        btnMe_s.marginLeft = '5.25%';
         btnMe_s.color = 'white';
         btnMe_s.backgroundColor = 'black';
         btnMe_s.border = 'none';
-        btnMe_s.display = 'none';
-        btnMe_s.boxShadow = '2px 2px 4px black';
+        btnMe_s.opacity = '0.5';
         btnMe_s.transitionDuration = '0.1s';
         const Me_s = Me.style;
         Me_s.width = '13.5%'; 
@@ -231,8 +232,8 @@ javascript:(
         Me_s.top = '0'; 
         Me_s.left = '0'; 
         Me_s.zIndex = '1002'; 
-        Me_s.margin = '2%';
-        Me_s.marginLeft = '5.3%';
+        Me_s.margin = '2.1%';
+        Me_s.marginLeft = '5.2%';
         Me_s.border = 'none'; 
         Me_s.display = 'none';
         Me_s.backgroundColor = 'black';
@@ -247,7 +248,7 @@ javascript:(
         btnNC_s.top = '0'; 
         btnNC_s.left = '0'; 
         btnNC_s.zIndex = '1003';
-        btnNC_s.margin = '2.7%';
+        btnNC_s.margin = '2.8%';
         btnNC_s.marginLeft = '6%';
         btnNC_s.color = 'white';
         btnNC_s.backgroundColor = '#121212';
@@ -264,7 +265,7 @@ javascript:(
         btnAB_s.top = '0'; 
         btnAB_s.left = '0'; 
         btnAB_s.zIndex = '1003';
-        btnAB_s.margin = '5.3%';
+        btnAB_s.margin = '5.4%';
         btnAB_s.marginLeft = '6%';
         btnAB_s.color = 'white';
         btnAB_s.backgroundColor = '#121212';
@@ -281,7 +282,7 @@ javascript:(
         btnTC_s.top = '0'; 
         btnTC_s.left = '0'; 
         btnTC_s.zIndex = '1003';
-        btnTC_s.margin = '7.9%';
+        btnTC_s.margin = '8%';
         btnTC_s.marginLeft = '6%';
         btnTC_s.color = 'white';
         btnTC_s.backgroundColor = '#121212';
@@ -298,7 +299,7 @@ javascript:(
         btnHF_s.top = '0'; 
         btnHF_s.left = '0'; 
         btnHF_s.zIndex = '1003';
-        btnHF_s.margin = '10.5%';
+        btnHF_s.margin = '10.6%';
         btnHF_s.marginLeft = '6%';
         btnHF_s.color = 'white';
         btnHF_s.backgroundColor = '#121212';
@@ -315,7 +316,7 @@ javascript:(
         btnWR_s.top = '0'; 
         btnWR_s.left = '0'; 
         btnWR_s.zIndex = '1003';
-        btnWR_s.margin = '13.1%';
+        btnWR_s.margin = '13.2%';
         btnWR_s.marginLeft = '6%';
         btnWR_s.color = 'white';
         btnWR_s.backgroundColor = '#121212';
