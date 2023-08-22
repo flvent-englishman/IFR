@@ -32,7 +32,7 @@ javascript:(
                 let newYt = 'https://www.youtube-nocookie.com/embed/' + yt[3];
                 return newYt;
             } else {
-                ifr.src = oldYt
+                return oldYt;
             }
         }
         function hover(item) {
@@ -112,15 +112,15 @@ javascript:(
         }
 
         function NC() {
-            let oldYt = prompt('Input a YouTube video link to turn into YouTube NC.');
+            let oldYt = prompt('🎧 YTNC | Input a YouTube video link to turn into YouTube NC.');
             if (oldYt.startsWith('https://www.youtube.com/watch?v=')) {
             let yt = input.split('=');
             let newYt = 'https://www.youtube-nocookie.com/embed/' + yt[1];
-            ifr.src = newYt;
+            return newYt;
             } else if (oldYt.startsWith('https://youtu.be/')) {
             let yt = input.split('/');
             let newYt = 'https://www.youtube-nocookie.com/embed/' + yt[3];
-            ifr.src = newYt;
+            return newYt;
             } else {
                 if (oldYt != null || oldYt != '') {
                     alert('⛔ ERROR | Did you put a valid YouTube link?');
