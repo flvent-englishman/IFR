@@ -1,4 +1,4 @@
-# I.F.R. | Inline Frame Rerouter
+# I.F.R. | Inline Frame Router
 Go incognito with this mutlitool bookmarklet that can pretty much never be blocked! <br>
 
 ## 👋 | For Users
