@@ -1,7 +1,6 @@
 javascript:(function() {
     let exited = false,
     minimized = false,
-    homepage = 'https://example.com/',
     tabs = 0;
     const ifr = document.createElement('iframe'),
     ifr_s = ifr.style,
@@ -33,17 +32,20 @@ javascript:(function() {
     btnKS_s = btnKS.style,
     btnTa = document.createElement('button'),
     btnTa_s = btnTa.style; 
-    if (window.location.href.startsWith('https://www.google.com')) {
-        homepage = 'https://www.google.com/';
-    } else if (page.startsWith('https://search.brave.com')) {
-        homepage = 'https://search.brave.com/';
-    } else {
-        homepage = 'https://yep.com/';
+    function detect(page) {
+        if (page.startsWith('https://www.google.com')) {
+            homepage = 'https://www.google.com/';
+        } else if (page.startsWith('https://search.brave.com')) {
+            homepage = 'https://search.brave.com/';
+        } else {
+            homepage = 'https://yep.com/';
+        }
+        return homepage;
     }
     function check(input) {
         let a = 0,
-        b = 0;
-        let output = 0;
+        b = 0,
+        output = 'https://example.com/';
         if (input.startsWith('https://www.youtube.com/watch?v=')) {
             a = input.split('=');
             output = `https://www.youtube-nocookie.com/embed/${a[1]}`;
@@ -64,7 +66,7 @@ javascript:(function() {
     }
     const link = prompt('💻 IFR | Input a link to embed or leave blank to search.').toLowerCase(); 
     if (link == '') {
-        ifr.src = homepage;
+        ifr.src = detect(window.location.href);
     } else if (link.startsWith('http')) {
         ifr.src = check(link);
     } else {
@@ -190,7 +192,7 @@ javascript:(function() {
             Tab = document.createElement('iframe'),
             Tab_s = Tab.style;
             tabs += 1;
-            Tab.src = homepage;
+            Tab.src = detect(window.location.href);
             function openTab() {
                 Tab_s.zIndex = 1001 + tabs;
             }
@@ -231,7 +233,7 @@ javascript:(function() {
     function AB() {
         const site = prompt('📋 EMBR | Please put in a link to embed into an about:blank page, leave blank to search.');
         if (site == '') {
-            site = homepage;
+            site = detect(window.location.href);
         }
         if (site != null) {
         const page = window.open('about:blank');  
@@ -265,7 +267,7 @@ javascript:(function() {
             }
         }
         if (done == true) {
-            alert('🌊 FLDR | History flood successful — "' + window.location.href + '" now appears in your history ' + amount + (amount == 1?' time.':' times.') + ' Credit to JonasFlynn for this tool!');
+            alert('🌊 FLDR | History flood successful — "' + a + '" now appears in your history ' + amount + (amount == 1?' time.':' times.') + ' Credit to JonasFlynn for this tool!');
         }
     }
     function WR() {
