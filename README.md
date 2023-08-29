@@ -10,6 +10,7 @@ Press the 'X' button in the top-left to close IFR (only works if all tabs are cl
 * How does this work? IFR embeds an iframe within the current website you're on so whatever you do within IFR won't show up in your history!
 * Why doesn't it work? Most websites don't allow people to make iframes of them to avoid impersonation, but Google, Wikipedia, and a few other websites do!
 * Can this unblock websites? No, this can not unblock websites. I am however looking to make a proxy within a bookmarklet so that way it can't really get blocked!
+* Why does the UI look weird? I've designed IFR to look good on my school's Chromebooks, so they might not look the best on your device.
 
 ### 🪲 Debugging
 * If you see a piece of paper with a sad face when you use IFR then that most liekly means that website doesn't allow iframes/to be made into an inframe.
