@@ -4,7 +4,7 @@ Circumvent tab focusing and go incognito, hiding your search history with this m
 ## 👋 | For Users
 Go to the 'bookmarklet.js' file and copy everything there. Then paste it into the bookmarks bar by right-clicking on it. Note that many websites don't allow iframes so if you're wondering why it doesn't seem to work that's why. Go to Google to use IFR since your school most probably hasn't blocked Google.
 ![image](https://github.com/TheReallyReal/IFR/assets/141452587/e76896cd-9df2-4e26-ba49-a81abcbe3bb6)
-Press the 'X' button in the top-left to close IFR, and press the '-' button to minimize IFR in case you want to hide it but also save what you were doing. Finally the '+' button is a dropdown that opens the menu which contains many tools, of which I will be constantly updating and adding more of. Also, use YouTube NC to watch YouTube videos since regular YouTube don't allow people to make them into an iframe. To do this copy the video link and then paste it into the tool in the menu.
+Press the 'X' button in the top-left to close IFR (only works if all tabs are closed), and press the '-' button to minimize all of IFR in case you want to hide it but also save what you were doing. Finally the '+' button is a dropdown that opens the menu which contains many tools, of which I will be constantly updating and adding more of. Also, use the "Link Converter" tool to convert supported links into embeddable forms since many sites don't allow iFrames.
 
 ### ❓ FAQ
 * How does this work? IFR embeds an iframe within the current website you're on so whatever you do within IFR won't show up in your history!
