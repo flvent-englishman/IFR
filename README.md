@@ -24,7 +24,9 @@ Take a look at the 'code.js' file to see the code formatted, feel free to copy &
 3. Replaced YouTube NC with a link converter that'll convert supported links in their embeddable version.
 4. Started work on a tabs feature
 5. Added a new homepage detector that'll change depending on what website you're on
-6. A couple of bug fixes
+6. Created some pages in the wiki that can be found in the bar at the top
+7. Made a new file called 'bookmarklet.js' that'll contain the minified code
+8. A couple of bug fixes
 
 ### 📝 To-Do
 1. Finish up working on the tabs.
