@@ -1,4 +1,4 @@
-javascript: /*v1.3*/
+javascript:(function() {
     let exited = false,
     minimized = false,
     homepage = 'https://example.com/',
@@ -600,3 +600,4 @@ javascript: /*v1.3*/
             return 0;
         }
     }
+})();
