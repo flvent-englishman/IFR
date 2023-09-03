@@ -19,15 +19,10 @@ Press the 'X' button in the top-left to close IFR (only works if all tabs are cl
 ## 💻 | For Developers 
 Take a look at the 'code.js' file to see the code formatted, feel free to copy & modify! You may DM me on discord @thereallyreal!
 
-### ⭐ Updates (v1.3)
-1. Added an info button (currently only displays the amount of tabs open)
-2. There's now one new tool (kill site) that'll delete everything in the current tab
-3. Replaced YouTube NC with a link converter that'll convert supported links in their embeddable version.
-4. Started work on a tabs feature
-5. Added a new homepage detector that'll change depending on what website you're on
-6. Created some pages in the wiki that can be found in the bar at the top
-7. Made a new file called 'bookmarklet.js' that'll contain the minified code
-8. A couple of bug fixes
+### ⭐ Updates (v1.4)
+1. Finished tabs feature
+2. Started work on optimizing for other screen sizes
+3. I forgot
 
 ### 📝 To-Do
 1. Finish up working on the tabs.
