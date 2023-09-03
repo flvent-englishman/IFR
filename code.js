@@ -234,7 +234,7 @@ javascript:(function() {
             tabBtn_s.zIndex = '2000';
             tabBtn_s.margin = '.25%';
             tabBtn_s.marginTop = '95.5vh';
-            tabBtn_s.marginLeft = tabsOpen > 1 ? 4.5 * tabsOpen - 2.4 + '%': '2.1%';
+            tabBtn_s.marginLeft = tabsOpen > 1 ? 4.6 * tabsOpen - 2.4 + 'vw': '2.1%';
             tabBtn_s.color = 'white';
             tabBtn_s.backgroundColor = 'black';
             tabBtn_s.border = 'none';
@@ -371,43 +371,31 @@ javascript:(function() {
 
     tools.append(btnLC);
     btnLC.onclick = function(){LC()};
-    btnLC.onpointerenter = function(){toolsOpen()};
-    btnLC.onpointerleave = function(){toolsClose()};
     btnLC.onmouseover = function(){hover(btnLC)};
     btnLC.onmouseout = function(){unhover(btnLC)};
 
     tools.append(btnAB);
     btnAB.onclick = function(){AB()};
-    btnAB.onpointerenter = function(){toolsOpen()};
-    btnAB.onpointerleave = function(){toolsClose()};
     btnAB.onmouseover = function(){hover(btnAB)};
     btnAB.onmouseout = function(){unhover(btnAB)};
 
     tools.append(btnTC);
     btnTC.onclick = function(){TC()};
-    btnTC.onpointerenter = function(){toolsOpen()};
-    btnTC.onpointerleave = function(){toolsClose()};
     btnTC.onmouseover = function(){hover(btnTC)};
     btnTC.onmouseout = function(){unhover(btnTC)};
 
     tools.append(btnHF);
     btnHF.onclick = function(){HF()};
-    btnHF.onpointerenter = function(){toolsOpen()};
-    btnHF.onpointerleave = function(){toolsClose()};
     btnHF.onmouseover = function(){hover(btnHF)};
     btnHF.onmouseout = function(){unhover(btnHF)};
 
     tools.append(btnWR);
     btnWR.onclick = function(){WR()};
-    btnWR.onpointerenter = function(){toolsOpen()};
-    btnWR.onpointerleave = function(){toolsClose()};
     btnWR.onmouseover = function(){hover(btnWR)};
     btnWR.onmouseout = function(){unhover(btnWR)};
 
     tools.append(btnKS);
     btnKS.onclick = function(){KS()};
-    btnKS.onpointerenter = function(){toolsOpen()};
-    btnKS.onpointerleave = function(){toolsClose()};
     btnKS.onmouseover = function(){hover(btnKS)};
     btnKS.onmouseout = function(){unhover(btnKS)};
 
