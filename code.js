@@ -3,19 +3,13 @@ javascript:(function() {
     tabOpen = '',
     tabsOpen = 0;
     const ifr = document.createElement('section'),
+    ifr_s = ifr.style,
     exitBtn = document.createElement('button'),
     exit_s = exitBtn.style,
     minimizeBtn = document.createElement('button'),
     minimize_s = minimizeBtn.style,
     menuBtn = document.createElement('button'),
     menu_s = menuBtn.style,
-    infoBtn = document.createElement('button'),
-    info_s = infoBtn.style,
-
-    material = document.createElement('menu'),
-    material_s = material.style,
-    txt = document.createElement('button'),
-    txt_s = txt.style,
 
     tools = document.createElement('menu'),
     tools_s = tools.style,
@@ -82,14 +76,6 @@ javascript:(function() {
             }
         }
     }
-    function materialOpen() {
-        material_s.display = 'block';
-        txt_s.display = 'block';
-    }
-    function materialClose() {
-        material_s.display = 'none';
-        txt_s.display = 'none';
-    }
     function toolsOpen() {
         if (minimized == false) {
             tools_s.display = 'block';
@@ -129,7 +115,7 @@ javascript:(function() {
                 minimize_s.boxShadow = '2px 2px 4px black';
                 menu_s.boxShadow = '2px 2px 4px black';
             }
-        } else if (item == infoBtn || item == tabBtn) {
+        } else if (item == tabBtn) {
             if (item != tabBtn) {
                 item.style.backgroundColor = '#0D0D0C';
             }
@@ -146,13 +132,11 @@ javascript:(function() {
             if (minimized == false) {
                 menu_s.opacity = '.5';
             }
-            info_s.opacity = '.5';
             exit_s.boxShadow = 'none';
             minimize_s.boxShadow = 'none';
             menu_s.boxShadow = 'none';
-            info_s.boxShadow = 'none';
             item.style.backgroundColor = 'black';
-        } else if (item == infoBtn || item == tabBtn) {
+        } else if (item == tabBtn) {
             item.style.opacity = '.5';
             item.style.boxShadow = 'none';
             item.style.backgroundColor = 'black';
@@ -226,15 +210,15 @@ javascript:(function() {
 
             tabBtn.textContent = name;
             tabBtn_s.fontSize = '2.5vh';
-            tabBtn_s.width = '10vh'; 
-            tabBtn_s.height = '4vh'; 
+            tabBtn_s.width = '10vh';
+            tabBtn_s.height = '4vh';
             tabBtn_s.position = 'fixed';
-            tabBtn_s.top = '0'; 
+            tabBtn_s.top = '0';
             tabBtn_s.left = '0'; 
             tabBtn_s.zIndex = '2000';
-            tabBtn_s.margin = '.25%';
+            tabBtn_s.margin = '.5vh';
             tabBtn_s.marginTop = '95.5vh';
-            tabBtn_s.marginLeft = tabsOpen > 1 ? 4.6 * tabsOpen - 2.4 + 'vw': '2.1%';
+            tabBtn_s.marginLeft = tabsOpen > 1 ? 10 * tabsOpen - 5 + 'vh': '5vh';
             tabBtn_s.color = 'white';
             tabBtn_s.backgroundColor = 'black';
             tabBtn_s.border = 'none';
@@ -260,7 +244,7 @@ javascript:(function() {
     }
     newTab(start);
     function LC() {
-        const link = prompt('🔗 CNVT | Put in a supported link to convert into an embeddable.').toLowerCase();
+        const link = prompt('🔗 CNVT | Put in a supported link to convert into an embeddable.');
         let a = 0,
         b = 0,
         linkNew = 'https://example.com/';
@@ -270,7 +254,7 @@ javascript:(function() {
         } else if (link.startsWith('https://youtu.be/')) {
             a = link.split('/');
             linkNew = `https://www.youtube-nocookie.com/embed/${a[3]}`;
-        } else if (link.startsWith('https://www.engineering.com/gamespuzzles/')) {
+        } else if (link.startsWith('https://www.engineering.com/GamesPuzzles/')) {
             a = link.split('/');
             b = a[4].split('.');
             linkNew = `https://games.engineering.com/${b[0]}/index.html`;
@@ -350,20 +334,6 @@ javascript:(function() {
     menuBtn.onmouseout = function(){unhover(menuBtn)};
     menuBtn.onpointerenter = function(){toolsOpen()};
     menuBtn.onpointerleave = function(){toolsClose()};
-        
-    ifr.append(infoBtn);
-    infoBtn.onmouseover = function(){hover(infoBtn)};
-    infoBtn.onmouseout = function(){unhover(infoBtn)};
-    infoBtn.onpointerenter = function(){materialOpen()};
-    infoBtn.onpointerleave = function(){materialClose()};
-
-    ifr.append(material);
-    material.onpointerenter = function(){materialOpen()};
-    material.onpointerleave = function(){materialClose()};
-
-    material.append(txt);
-    txt.onpointerenter = function(){materialOpen()};
-    txt.onpointerleave = function(){materialClose()};
 
     ifr.append(tools);
     tools.onpointerenter = function(){toolsOpen()};
@@ -407,14 +377,14 @@ javascript:(function() {
     ifr.append(tabs);
 
     exitBtn.textContent = '✕';
-    exit_s.fontSize = '1.2vw';
-    exit_s.width = '2.5%'; 
-    exit_s.height = '4%'; 
+    exit_s.fontSize = '2.5vh';
+    exit_s.width = '5.6vh'; 
+    exit_s.height = '4vh'; 
     exit_s.position = 'fixed';
     exit_s.top = '0'; 
     exit_s.left = '0'; 
     exit_s.zIndex = '2000';
-    exit_s.margin = '.25%';
+    exit_s.margin = '.5vh';
     exit_s.color = 'white';
     exit_s.backgroundColor = 'black';
     exit_s.border = 'none';
@@ -422,15 +392,15 @@ javascript:(function() {
     exit_s.transitionDuration = '.1s';
 
     minimizeBtn.textContent = '–';
-    minimize_s.fontSize = '1.5vw';
-    minimize_s.width = '2.5%'; 
-    minimize_s.height = '4%'; 
+    minimize_s.fontSize = '3vh';
+    minimize_s.width = '5.6vh'; 
+    minimize_s.height = '4vh'; 
     minimize_s.position = 'fixed';
     minimize_s.top = '0'; 
     minimize_s.left = '0'; 
     minimize_s.zIndex = '2000';
-    minimize_s.margin = '.25%';
-    minimize_s.marginLeft = '2.75%';
+    minimize_s.margin = '.5vh';
+    minimize_s.marginLeft = '6.1vh';
     minimize_s.color = 'white';
     minimize_s.backgroundColor = 'black';
     minimize_s.border = 'none';
@@ -438,66 +408,20 @@ javascript:(function() {
     minimize_s.transitionDuration = '.1s';
         
     menuBtn.textContent = '+';
-    menu_s.fontSize = '1.5vw';
-    menu_s.width = '2.5%'; 
-    menu_s.height = '4%'; 
+    menu_s.fontSize = '3vh';
+    menu_s.width = '5.6vh'; 
+    menu_s.height = '4vh'; 
     menu_s.position = 'fixed';
     menu_s.top = '0';
     menu_s.left = '0';
     menu_s.zIndex = '2000';
-    menu_s.margin = '.25%';
-    menu_s.marginLeft = '5.25%';
+    menu_s.margin = '.5vh';
+    menu_s.marginLeft = '11.6vh';
     menu_s.color = 'white';
     menu_s.backgroundColor = 'black';
     menu_s.border = 'none';
     menu_s.opacity = '.5';
     menu_s.transitionDuration = '.1s';
-       
-    infoBtn.textContent = 'i';
-    info_s.fontSize = '1.2vw';
-    info_s.width = '2.5%'; 
-    info_s.height = '4%'; 
-    info_s.position = 'fixed';
-    info_s.top = '0';
-    info_s.left = '0';
-    info_s.zIndex = '2000';
-    info_s.float = 'right';
-    info_s.margin = '.25%';
-    info_s.marginLeft = '97.25%';
-    info_s.color = 'white';
-    info_s.backgroundColor = 'black';
-    info_s.border = 'none';
-    info_s.opacity = '.5';
-    info_s.transitionDuration = '.1s';
-
-    material_s.width = '13.5%'; 
-    material_s.height = '36%'; 
-    material_s.position = 'fixed';
-    material_s.top = '0'; 
-    material_s.left = '0'; 
-    material_s.zIndex = '2001'; 
-    material_s.margin = '2%';
-    material_s.marginLeft = '86.3%';
-    material_s.border = 'none'; 
-    material_s.display = 'none';
-    material_s.backgroundColor = 'black';
-    material_s.boxShadow = '2px 2px 4px black';
-
-    txt.textContent = 'W.I.P.';
-    txt_s.width = '13%'; 
-    txt_s.height = '35%'; 
-    txt_s.position = 'fixed';
-    txt_s.top = '0'; 
-    txt_s.left = '0'; 
-    txt_s.zIndex = '2002'; 
-    txt_s.margin = '2.25%';
-    txt_s.marginLeft = '86.55%';
-    txt_s.border = 'none'; 
-    txt_s.display = 'none';
-    txt_s.fontSize = '1vw';
-    txt_s.fontFamily = 'sans';
-    txt_s.color = 'white';
-    txt_s.backgroundColor = 'black';
 
     tools_s.width = '13.5%'; 
     tools_s.height = '36%'; 
@@ -514,7 +438,7 @@ javascript:(function() {
 
     for (let item of tools.children) {
         let item_s = item.style;
-        item_s.fontSize = '1vw';
+        item_s.fontSize = '2vh';
         item_s.fontFamily = 'arial';
         item_s.position = 'fixed';
         item_s.top = '0';
