@@ -1,5 +1,5 @@
 # I.F.R. | Inline Frame Router
-Circumvent tab focusing and go incognito, hiding your search history with this multitool bookmarklet!
+Circumvent tab focusing and hide from Hapara tab view. Pretty much incognito mode for your Chromebook with many other tools included.
 ![image](https://github.com/TheReallyReal/IFR/assets/141452587/1ea779d4-e966-4afc-b800-6df56f95d886)
 
 ## 👋 | For Users
