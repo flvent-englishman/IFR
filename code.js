@@ -25,6 +25,8 @@ javascript:(function() {
     btnWR_s = btnWR.style,
     btnKS = document.createElement('button'),
     btnKS_s = btnKS.style,
+    btnTS = document.createElement('button'),
+    btnTS_s = btnTS.style,
 
     tabBtn = document.createElement('button'),
     btnTa_s = tabBtn.style,
@@ -170,6 +172,25 @@ javascript:(function() {
                 tab_s.display = 'block';
                 tabOpen = name;
             }
+            function reloadTab() {
+                tab.src = tab.src;
+            }
+            function backTab() {
+                const amount = prompt('IFR | How far back do you want to go back? Leave blank for once.');
+                if (amount == '') {
+                    amount = -1;
+                } else {
+                    amount *= -1;
+                }
+                iframe.contentWindow.history.go(amount);
+            }
+            function forwardTab() {
+                const amount = prompt('IFR | How far forward do you want to go? Leave blank for once.');
+                if (amount == '') {
+                    amount = 1;
+                }
+                iframe.contentWindow.history.go(amount);
+            }
             function editTab() {
                 const option = prompt('💻 IFR | Do you want to close this tab or edit the tab position? Put in 1 or 2.');
                 switch(option) {
@@ -181,7 +202,7 @@ javascript:(function() {
                         break;
                     case '2':
                         const position = prompt('💻 IFR | Put in a number to move the tab to.');
-                        tabBtn_s.marginLeft = 5 * position - 2 + '%';
+                        tabBtn_s.marginLeft = position > 1 ? 10 * tabsOpen - 5 + 'vh': '5vh';
                         break;
                     default:
                         alert('⛔ ERR | Please only put in 1 or 2 next time!');
@@ -307,12 +328,27 @@ javascript:(function() {
         }
     }
     function WR() {
-        ifr.src = 'https://en.wikipedia.org/wiki/Special:Random';
+        newTab('https://en.wikipedia.org/wiki/Special:Random');
     }
     function KS() {
         const verify = confirm('🔪 KLLR | Are you sure to want to kill this entire tab?');
         if (verify == true) {
             document.body.remove();
+        }
+    }
+    function TS() {
+        const verify = confirm('💣 SPAM | Are you sure you want to spam tabs?');
+        if (verify == true) {
+            const website = prompt('What website do you want to spam? Input "n" for a term instead.');
+            if (website == 'n') {
+                const term = prompt('What term do you want to spam?');
+                website = `https://www.google.com/search?q=${term}`;
+            } else {
+                website = website.startsWith('http') ? website : 'https://' + website;
+            }
+            while (true) {
+                window.open(website);
+            }
         }
     }
     document.body.appendChild(ifr);
@@ -369,6 +405,11 @@ javascript:(function() {
     btnKS.onmouseover = function(){hover(btnKS)};
     btnKS.onmouseout = function(){unhover(btnKS)};
 
+    tools.append(btnTS);
+    btnTS.onclick = function(){TS()};
+    btnTS.onmouseover = function(){hover(btnTS)};
+    btnTS.onmouseout = function(){unhover(btnTS)};
+
     ifr.append(tabBtn);
     tabBtn.onclick = function(){newTab(prompt('💻 IFR | Put in a link or leave blank to search in a new tab.'))};
     tabBtn.onmouseover = function(){hover(tabBtn)};
@@ -423,21 +464,22 @@ javascript:(function() {
     menu_s.opacity = '.5';
     menu_s.transitionDuration = '.1s';
 
-    tools_s.width = '13.5%'; 
-    tools_s.height = '36%'; 
+    tools_s.width = '26vh';
+    tools_s.height = '41vh';
     tools_s.position = 'fixed';
-    tools_s.top = '0'; 
-    tools_s.left = '0'; 
-    tools_s.zIndex = '2001'; 
-    tools_s.margin = '2.15%';
-    tools_s.marginLeft = '5.25%';
-    tools_s.border = 'none'; 
+    tools_s.top = '0';
+    tools_s.left = '0';
+    tools_s.zIndex = '2001';
+    tools_s.margin = '4vh';
+    tools_s.marginLeft = '12vh';
+    tools_s.border = 'none';
     tools_s.display = 'none';
     tools_s.backgroundColor = 'black';
     tools_s.boxShadow = '2px 2px 4px black';
 
     for (let item of tools.children) {
         let item_s = item.style;
+        item_s.height = '3.8vh';
         item_s.fontSize = '2vh';
         item_s.fontFamily = 'arial';
         item_s.position = 'fixed';
@@ -453,40 +495,39 @@ javascript:(function() {
     }
     
     btnLC.textContent = 'Link Converter';
-    btnLC_s.width = '8%'; 
-    btnLC_s.height = '3.8%'; 
+    btnLC_s.width = '8%';  
     btnLC_s.margin = '2.7%';
     btnLC_s.marginLeft = '6%';
     
     btnAB.textContent = 'About:Blank Embedder';
     btnAB_s.width = '12%'; 
-    btnAB_s.height = '3.8%'; 
     btnAB_s.margin = '5.3%';
     btnAB_s.marginLeft = '6%';
         
     btnTC.textContent = 'Tab Cloak';
     btnTC_s.width = '6%'; 
-    btnTC_s.height = '3.8%'; 
     btnTC_s.margin = '7.9%';
     btnTC_s.marginLeft = '6%';
         
     btnHF.textContent = 'History Flooder';
     btnHF_s.width = '8.5%'; 
-    btnHF_s.height = '3.8%'; 
     btnHF_s.margin = '10.5%';
     btnHF_s.marginLeft = '6%';
         
     btnWR.textContent = 'Random Article';
-    btnWR_s.width = '9%'; 
-    btnWR_s.height = '3.8%';
+    btnWR_s.width = '16vh'; 
     btnWR_s.margin = '13.1%';
     btnWR_s.marginLeft = '6%';
 
     btnKS.textContent = 'Kill Site';
-    btnKS_s.width = '5%'; 
-    btnKS_s.height = '3.8%'; 
+    btnKS_s.width = '10vh'; 
     btnKS_s.margin = '15.7%';
     btnKS_s.marginLeft = '6%';
+
+    btnTS.textContent = 'Tab Spam';
+    btnTS_s.width = '12vh';
+    btnTS_s.margin = '18.3%';
+    btnTS_s.marginLeft = '6%';
 
     tabBtn.textContent = '+';
     btnTa_s.fontSize = '3vh';
