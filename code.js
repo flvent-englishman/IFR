@@ -1,9 +1,16 @@
 javascript:(function() {
     let minimized = false,
+    homepage = window.location.href == 'https://www.google.com/' ? 'https://www.google.com/' : 'https://yep.com/',
     tabOpen = '',
-    tabsOpen = 0;
+    tabsOpen = 0,
+    tabsEverOpen = 0;
+
     const ifr = document.createElement('section'),
-    ifr_s = ifr.style,
+    ifrBtns = document.createElement('div'),
+    tools = document.createElement('menu'),
+    tabs = document.createElement('div'),
+    tabBtns = document.createElement('div'),
+
     exitBtn = document.createElement('button'),
     exit_s = exitBtn.style,
     minimizeBtn = document.createElement('button'),
@@ -11,7 +18,6 @@ javascript:(function() {
     menuBtn = document.createElement('button'),
     menu_s = menuBtn.style,
 
-    tools = document.createElement('menu'),
     tools_s = tools.style,
     btnLC = document.createElement('button'),
     btnLC_s = btnLC.style,
@@ -28,54 +34,103 @@ javascript:(function() {
     btnTS = document.createElement('button'),
     btnTS_s = btnTS.style,
 
-    tabBtn = document.createElement('button'),
-    btnTa_s = tabBtn.style,
-    tabs = document.createElement('div');
+    newBtn = document.createElement('button'),
+    new_s = newBtn.style;
 
-    function check(link) {
-        let linkNew = 'https://example.com/';
-        if (link.startsWith('http')) {
-            linkNew = link;
-        } else {
-            linkNew = 'https://' + link;
+    function check(input) {
+        let output = input;
+        if (!input.startsWith('http')) {
+            if (input != '') {
+                output = 'https://' + input;
+            } else {
+                output = homepage;
+            }
         }
-        return linkNew;
+        return output;
     }
-    function detect(link) {
-        if (link.startsWith('https://www.google.com')) {
-            homepage = 'https://www.google.com/';
-        } else if (link.startsWith('https://search.brave.com')) {
-            homepage = 'https://search.brave.com/';
-        } else {
-            homepage = 'https://yep.com/';
+    function hover(item) {
+        try {
+            item_s = item.style;
+            if (item.parentElement == ifrBtns) {
+                if (item == exitBtn) {
+                    item_s.backgroundColor = '#F25022';
+                } else {
+                    item_s.backgroundColor = '#0D0D0C';
+                }
+                exit_s.opacity = '1';
+                minimize_s.opacity = '1';
+                exit_s.boxShadow = '2px 2px 4px black';
+                minimize_s.boxShadow = '2px 2px 4px black';
+                menu_s.opacity = '1';
+                menu_s.boxShadow = '2px 2px 4px black';
+            } else if (item == newBtn) {
+                if (item != newBtn) {
+                    item_s.backgroundColor = '#0D0D0C';
+                }
+                item_s.opacity = '1';
+                item_s.boxShadow = '2px 2px 4px black';
+            } else {
+                item_s.backgroundColor = '#181818';
+            }
+        } catch(e) {
+            alert(`🐱 CAT | ${e.message}`);
         }
-        return homepage;
     }
-    homepage = detect(window.location.href);
+    function unhover(item) {
+        try {
+            item_s = item.style;
+            if (item.parentElement == ifrBtns) {
+                item_s.backgroundColor = 'black';
+                exit_s.opacity = '.5';
+                minimize_s.opacity = '.5';
+                exit_s.boxShadow = 'none';
+                minimize_s.boxShadow = 'none';
+                menu_s.opacity = '.5';
+                menu_s.boxShadow = 'none';
+            } else if (item == newBtn) {
+                item_s.opacity = '.5';
+                item_s.boxShadow = 'none';
+                item_s.backgroundColor = 'black';
+            } else {
+                item_s.backgroundColor = '#121212';
+            }
+        } catch(e) {
+            alert(`🐱 CAT | ${e.message}`);
+        }
+    }
     function exit() {
-        verify = confirm('💻 IFR | Are you sure you want to exit?');
-        if (verify == true) {
-            ifr.remove();
-            exitBtn.remove();
-            minimizeBtn.remove();
-            menuBtn.remove();
+        try {
+            verify = confirm('💻 IFR | Are you sure you want to exit?');
+            if (verify == true) {
+                ifr.remove();
+            }
+        } catch(e) {
+            alert(`🐱 CAT | ${e.message}`);
         }
     }
     function minimize() {
-        if (minimized == false) {
-            minimized = true;
-            menu_s.width = '0';
-            menu_s.opacity = '0';
-            for (let item of tabs.children) {
-                item.style.width = '0';
+        try {
+            if (minimized != true) {
+                minimized = true;
+                for (let item of tabs.children) {
+                    item.style.width = '0';
+                }
+                for (let item of tabBtns.children) {
+                    item.style.height = '0';
+                    item.style.opacity = '0';
+                }
+            } else {
+                minimized = false;
+                for (let item of tabs.children) {
+                    item.style.width = '100%';
+                }
+                for (let item of tabBtns.children) {
+                    item.style.height = '4vh';
+                    item.style.opacity = '0.5';
+                }
             }
-        } else {
-            minimized = false;
-            menu_s.width = '2.5%';
-            menu_s.opacity = '.5';
-            for (let item of tabs.children) {
-                item.style.width = '100%';
-            }
+        } catch(e) {
+            alert(`🐱 CAT | ${e.message}`);
         }
     }
     function toolsOpen() {
@@ -92,122 +147,110 @@ javascript:(function() {
             item.style.display = 'none';
         }
     }
-    function hover(item) {
-        if (item == exitBtn || item == minimizeBtn) {
-            if (item == exitBtn) {
-                item.style.backgroundColor = '#F25022';
-            } else {
-                item.style.backgroundColor = '#0D0D0C';
-            }
-            exit_s.opacity = '1';
-            minimize_s.opacity = '1';
-            if (minimized == false) {
-                menu_s.opacity = '1';
-            }
-            exit_s.boxShadow = '2px 2px 4px black';
-            minimize_s.boxShadow = '2px 2px 4px black';
-            menu_s.boxShadow = '2px 2px 4px black';
-        } else if (item == menuBtn) {
-            item.style.backgroundColor = '#0D0D0C';
-            if (minimized == false) {
-                exit_s.opacity = '1';
-                minimize_s.opacity = '1';
-                menu_s.opacity = '1';
-                exit_s.boxShadow = '2px 2px 4px black';
-                minimize_s.boxShadow = '2px 2px 4px black';
-                menu_s.boxShadow = '2px 2px 4px black';
-            }
-        } else if (item == tabBtn) {
-            if (item != tabBtn) {
-                item.style.backgroundColor = '#0D0D0C';
-            }
-            item.style.opacity = '1';
-            item.style.boxShadow = '2px 2px 4px black';
-        } else {
-            item.style.backgroundColor = '#181818';
-        }
-    }
-    function unhover(item) {
-        if (item == exitBtn || item == minimizeBtn || item == menuBtn) {
-            exit_s.opacity = '.5';
-            minimize_s.opacity = '.5';
-            if (minimized == false) {
-                menu_s.opacity = '.5';
-            }
-            exit_s.boxShadow = 'none';
-            minimize_s.boxShadow = 'none';
-            menu_s.boxShadow = 'none';
-            item.style.backgroundColor = 'black';
-        } else if (item == tabBtn) {
-            item.style.opacity = '.5';
-            item.style.boxShadow = 'none';
-            item.style.backgroundColor = 'black';
-        } else {
-            item.style.backgroundColor = '#121212';
-        }
-    }
     function newTab(link) {
-        if (tabsOpen < 9) {
+        try {
             tabsOpen += 1;
-            let name = `Tab #${tabsOpen}`;
-            const tabBtn = document.createElement('button'),
+            tabsEverOpen += 1;
+            
+            let name = `Tab #${tabsEverOpen}`;
+
+            const tab = document.createElement('iframe'),
+            tab_s = tab.style,
+            tabBtn = document.createElement('button'),
             tabBtn_s = tabBtn.style,
-            tab = document.createElement('iframe'),
-            tab_s = tab.style;
-            tabOpen = name;
-            function hoverTab() {
-                tabBtn_s.backgroundColor = '#0D0D0C';
-                tabBtn_s.opacity = '1';
-                tabBtn_s.boxShadow = '2px 2px 4px black';
+            reloadBtn = document.createElement('button'),
+            reload_s = reloadBtn.style,
+            backBtn = document.createElement('button'),
+            back_s = backBtn.style,
+            forwardBtn = document.createElement('button'),
+            forward_s = forwardBtn.style;
+
+            function over(item) {
+                item_s = item.style;
+                item_s.opacity = '1';
+                item_s.boxShadow = '2px 2px 4px black';
+                if (item != tabBtn) {
+                    if (tabOpen == name) {
+                        item_s.backgroundColor = '#0D0D0C';
+                        reload_s.opacity = '1';
+                        reload_s.boxShadow = '2px 2px 4px black';
+                        back_s.opacity = '1';
+                        back_s.boxShadow = '2px 2px 4px black';
+                        forward_s.opacity = '1';
+                        forward_s.boxShadow = '2px 2px 4px black';
+                    }
+                }
             }
-            function unhoverTab() {
-                tabBtn_s.backgroundColor = 'black';
-                tabBtn_s.opacity = '.5';
-                tabBtn_s.boxShadow = 'none';
+            function unover(item) {
+                const item_s = item.style;
+                item_s.backgroundColor = 'black';
+                item_s.opacity = '.5';
+                item_s.boxShadow = 'none';
+                if (item != tabBtn) {
+                    if (tabOpen == name) {
+                        reload_s.opacity = '.5';
+                        reload_s.boxShadow = 'none';
+                        back_s.opacity = '.5';
+                        back_s.boxShadow = 'none';
+                        forward_s.opacity = '.5';
+                        forward_s.boxShadow = 'none';
+                    }
+                }
             }
-            function openTab() {
+            function open() {
                 for (let item of tabs.children) {
                     item.style.display = 'none';
                 }
-                tab_s.display = 'block';
+                for (let item of tabBtns.children) {
+                    item.style.display = 'none';
+                }
+                reload_s.display = 'block';
+                back_s.display = 'block';
+                forward_s.display = 'block';
                 tabOpen = name;
             }
-            function reloadTab() {
-                tab.src = tab.src;
-            }
-            function backTab() {
-                const amount = prompt('IFR | How far back do you want to go back? Leave blank for once.');
-                if (amount == '') {
-                    amount = -1;
-                } else {
-                    amount *= -1;
+            function close() {
+                const verify = confirm('💻 IFR | Are you sure to want to close this tab?');
+                if (verify == true) {
+                    tab.remove();
+                    tabBtn.remove();
+                    reloadBtn.remove();
                 }
-                iframe.contentWindow.history.go(amount);
             }
-            function forwardTab() {
-                const amount = prompt('IFR | How far forward do you want to go? Leave blank for once.');
-                if (amount == '') {
-                    amount = 1;
-                }
-                iframe.contentWindow.history.go(amount);
+            function reload() {
+                tab.contentWindow.location.reload();
             }
-            function editTab() {
-                const option = prompt('💻 IFR | Do you want to close this tab or edit the tab position? Put in 1 or 2.');
-                switch(option) {
-                    case '1':
-                        tabBtn.remove();
-                        tab.remove();
-                        tabOpen = '';
-                        tabsOpen -= 1;
-                        break;
-                    case '2':
-                        const position = prompt('💻 IFR | Put in a number to move the tab to.');
-                        tabBtn_s.marginLeft = position > 1 ? 10 * tabsOpen - 5 + 'vh': '5vh';
-                        break;
-                    default:
-                        alert('⛔ ERR | Please only put in 1 or 2 next time!');
-                  }
+            function back() {
+                tab.contentWindow.history.back(); 
             }
+            function forward() {
+                tab.contentWindow.history.forward();
+            }
+            tabs.append(tab);
+
+            ifr.append(tabBtn);
+            tabBtn.onclick = function(){open()};
+            tabBtn.ondblclick = function(){close()};
+            tabBtn.onmouseover = function(){over(tabBtn)};
+            tabBtn.onmouseout = function(){unover(tabBtn)};
+
+            tabBtns.append(reloadBtn);
+            reloadBtn.onclick = function(){reload()};
+            reloadBtn.onmouseover = function(){over(reloadBtn)};
+            reloadBtn.onmouseout = function(){unover(reloadBtn)};
+
+            tabBtns.append(backBtn);
+            backBtn.onclick = function(){back()};
+            backBtn.onmouseover = function(){over(backBtn)};
+            backBtn.onmouseout = function(){unover(backBtn)};
+
+            tabBtns.append(forwardBtn);
+            forwardBtn.onclick = function(){forward()};
+            forwardBtn.onmouseover = function(){over(forwardBtn)};
+            forwardBtn.onmouseout = function(){unover(forwardBtn)};
+
+
+            open();
             function ensure() {
                 if (tabOpen == name) {
                     tabBtn_s.backgroundColor = '#00A4EF';
@@ -215,20 +258,45 @@ javascript:(function() {
                     tabBtn_s.backgroundColor = 'black';
                 }
             }
-            if (link == '') {
-                tab.src = homepage;
-            } else {
-                tab.src = check(link);
-            }
+            tab.src = link;
             tab_s.width = '100%';
             tab_s.height = '100%';
             tab_s.position = 'fixed';
             tab_s.top = '0';
             tab_s.left = '0';
-            tab_s.zIndex = 1000 + tabsOpen;
+            tab_s.zIndex = '1000';
             tab_s.border = 'none';
             tab_s.display = 'block';
 
+            for (let item of tabBtns.children) {
+                item_s = item.style;
+                item_s.width = '5.6vh';
+                item_s.height = '4vh';
+                item_s.position = 'fixed';
+                item_s.top = '0';
+                item_s.left = '0';
+                item_s.zIndex = '2000';
+                item_s.color = 'white';
+                item_s.backgroundColor = 'black';
+                item_s.border = 'none';
+                item_s.opacity = '.5';
+                item_s.transitionDuration = '.1s';
+            }
+            reloadBtn.textContent = '⟳';
+            reload_s.fontSize = '3vh';
+            reload_s.margin = '.5vh';
+            reload_s.marginTop = '4.5vh';
+
+            backBtn.textContent = '◀';
+            back_s.fontSize = '2.5vh';
+            back_s.marginLeft = '6.1vh';
+            back_s.marginTop = '4.5vh';
+
+            forwardBtn.textContent = '▶';
+            forward_s.fontSize = '2.5vh';
+            forward_s.marginLeft = '11.65vh';
+            forward_s.marginTop = '4.5vh';
+            
             tabBtn.textContent = name;
             tabBtn_s.fontSize = '2.5vh';
             tabBtn_s.width = '10vh';
@@ -245,47 +313,34 @@ javascript:(function() {
             tabBtn_s.border = 'none';
             tabBtn_s.opacity = '.5';
             tabBtn_s.transitionDuration = '.1s';
-
-            ifr.append(tabBtn);
-            tabBtn.onclick = function(){openTab()};
-            tabBtn.ondblclick = function(){editTab()};
-            tabBtn.onmouseover = function(){hoverTab()};
-            tabBtn.onmouseout = function(){unhoverTab()};
-            tabs.append(tab);
+            
             setInterval(ensure, 1);
-        } else {
-            alert('⛔ ERR | Max amount of tabs reached!');
+        } catch(e) {
+            alert(`🐱 CAT | ${e.message}`);
         }
     }
-    let start = prompt('💻 IFR | Put in a link or leave blank to search.');
-    if (start == '') {
-        start = detect(window.location.href);
-    } else {
-        start = check(start);
-    }
-    newTab(start);
     function LC() {
-        const link = prompt('🔗 CNVT | Put in a supported link to convert into an embeddable.');
+        const input = prompt('🔗 CNVT | Put in a supported link to convert into an embeddable.');
         let a = 0,
         b = 0,
-        linkNew = 'https://example.com/';
-        if (link.startsWith('https://www.youtube.com/watch?v=')) {
-            a = link.split('=');
-            linkNew = `https://www.youtube-nocookie.com/embed/${a[1]}`;
-        } else if (link.startsWith('https://youtu.be/')) {
-            a = link.split('/');
-            linkNew = `https://www.youtube-nocookie.com/embed/${a[3]}`;
-        } else if (link.startsWith('https://www.engineering.com/GamesPuzzles/')) {
-            a = link.split('/');
+        output = 'https://example.com/';
+        if (input.startsWith('https://www.youtube.com/watch?v=')) {
+            a = input.split('=');
+            output = `https://www.youtube-nocookie.com/embed/${a[1]}`;
+        } else if (input.startsWith('https://youtu.be/')) {
+            a = input.split('/');
+            output = `https://www.youtube-nocookie.com/embed/${a[3]}`;
+        } else if (input.startsWith('https://www.engineering.com/GamesPuzzles/')) {
+            a = input.split('/');
             b = a[4].split('.');
-            linkNew = `https://games.engineering.com/${b[0]}/index.html`;
-        } else if (link.startsWith('https://scratch.mit.edu/projects/')) {
-            a = link.split('/');
-            linkNew = `https://scratch.mit.edu/projects/${a[4]}/embed/`;
+            output = `https://games.engineering.com/${b[0]}/index.html`;
+        } else if (input.startsWith('https://scratch.mit.edu/projects/')) {
+            a = input.split('/');
+            output = `https://scratch.mit.edu/projects/${a[4]}/embed/`;
         } else {
             alert("⛔ ERR | Looks like that site isn't supported yet!");
         }
-        newTab(linkNew);
+        newTab(output);
     }
     function AB() {
         let site = prompt('📋 EMBR | Please put in a link to embed into an about:blank page, leave blank to search.');
@@ -352,28 +407,28 @@ javascript:(function() {
         }
     }
     document.body.appendChild(ifr);
-    ifr.onmouseover = function(){hover(ifr)};
-    ifr.onmouseout = function(){unhover(ifr)};
+    ifr.appendChild(ifrBtns);
+    ifr.append(tools);
+    tools.onpointerenter = function(){toolsOpen()};
+    tools.onpointerleave = function(){toolsClose()};
+    ifr.append(tabs);
+    ifr.append(tabBtns);
 
-    ifr.append(exitBtn);
+    ifrBtns.append(exitBtn);
     exitBtn.onmouseover = function(){hover(exitBtn)};
     exitBtn.onmouseout = function(){unhover(exitBtn)};
     exitBtn.onclick = function(){exit()};
 
-    ifr.append(minimizeBtn);
+    ifrBtns.append(minimizeBtn);
     minimizeBtn.onmouseover = function(){hover(minimizeBtn)};
     minimizeBtn.onmouseout = function(){unhover(minimizeBtn)};
     minimizeBtn.onclick = function(){minimize()};
 
-    ifr.append(menuBtn);
+    ifrBtns.append(menuBtn);
     menuBtn.onmouseover = function(){hover(menuBtn)};
     menuBtn.onmouseout = function(){unhover(menuBtn)};
     menuBtn.onpointerenter = function(){toolsOpen()};
     menuBtn.onpointerleave = function(){toolsClose()};
-
-    ifr.append(tools);
-    tools.onpointerenter = function(){toolsOpen()};
-    tools.onpointerleave = function(){toolsClose()};
 
     tools.append(btnLC);
     btnLC.onclick = function(){LC()};
@@ -410,75 +465,54 @@ javascript:(function() {
     btnTS.onmouseover = function(){hover(btnTS)};
     btnTS.onmouseout = function(){unhover(btnTS)};
 
-    ifr.append(tabBtn);
-    tabBtn.onclick = function(){newTab(prompt('💻 IFR | Put in a link or leave blank to search in a new tab.'))};
-    tabBtn.onmouseover = function(){hover(tabBtn)};
-    tabBtn.onmouseout = function(){unhover(tabBtn)};
+    ifr.append(newBtn);
+    newBtn.onclick = function(){check(newTab(prompt('💻 IFR | Put in a link or leave blank to search in a new tab.')))};
+    newBtn.onmouseover = function(){hover(newBtn)};
+    newBtn.onmouseout = function(){unhover(newBtn)};
 
-    ifr.append(tabs);
-
+    newTab(check(prompt('💻 IFR | Put in a link or leave blank to search.')));
+    
+    for (let item of ifrBtns.children) {
+        const item_s = item.style;
+        item_s.width = '5.6vh'; 
+        item_s.height = '4vh';
+        item_s.position = 'fixed';
+        item_s.top = '0'; 
+        item_s.left = '0'; 
+        item_s.zIndex = '2000';
+        item_s.margin = '.5vh';
+        item_s.color = 'white';
+        item_s.backgroundColor = 'black';
+        item_s.border = 'none';
+        item_s.opacity = '.5';
+        item_s.transitionDuration = '.1s';
+    }
     exitBtn.textContent = '✕';
     exit_s.fontSize = '2.5vh';
-    exit_s.width = '5.6vh'; 
-    exit_s.height = '4vh'; 
-    exit_s.position = 'fixed';
-    exit_s.top = '0'; 
-    exit_s.left = '0'; 
-    exit_s.zIndex = '2000';
-    exit_s.margin = '.5vh';
-    exit_s.color = 'white';
-    exit_s.backgroundColor = 'black';
-    exit_s.border = 'none';
-    exit_s.opacity = '.5';
-    exit_s.transitionDuration = '.1s';
 
     minimizeBtn.textContent = '–';
     minimize_s.fontSize = '3vh';
-    minimize_s.width = '5.6vh'; 
-    minimize_s.height = '4vh'; 
-    minimize_s.position = 'fixed';
-    minimize_s.top = '0'; 
-    minimize_s.left = '0'; 
-    minimize_s.zIndex = '2000';
-    minimize_s.margin = '.5vh';
     minimize_s.marginLeft = '6.1vh';
-    minimize_s.color = 'white';
-    minimize_s.backgroundColor = 'black';
-    minimize_s.border = 'none';
-    minimize_s.opacity = '.5';
-    minimize_s.transitionDuration = '.1s';
         
     menuBtn.textContent = '+';
     menu_s.fontSize = '3vh';
-    menu_s.width = '5.6vh'; 
-    menu_s.height = '4vh'; 
-    menu_s.position = 'fixed';
-    menu_s.top = '0';
-    menu_s.left = '0';
-    menu_s.zIndex = '2000';
-    menu_s.margin = '.5vh';
-    menu_s.marginLeft = '11.6vh';
-    menu_s.color = 'white';
-    menu_s.backgroundColor = 'black';
-    menu_s.border = 'none';
-    menu_s.opacity = '.5';
-    menu_s.transitionDuration = '.1s';
+    menu_s.marginLeft = '11.65vh';
 
     tools_s.width = '26vh';
-    tools_s.height = '41vh';
+    tools_s.height = '40vh';
     tools_s.position = 'fixed';
     tools_s.top = '0';
     tools_s.left = '0';
     tools_s.zIndex = '2001';
-    tools_s.margin = '4vh';
-    tools_s.marginLeft = '12vh';
+    tools_s.margin = '2.5vh';
+    tools_s.marginLeft = '17.35vh';
     tools_s.border = 'none';
     tools_s.display = 'none';
     tools_s.backgroundColor = 'black';
     tools_s.boxShadow = '2px 2px 4px black';
 
     for (let item of tools.children) {
-        let item_s = item.style;
+        const item_s = item.style;
         item_s.height = '3.8vh';
         item_s.fontSize = '2vh';
         item_s.fontFamily = 'arial';
@@ -486,64 +520,62 @@ javascript:(function() {
         item_s.top = '0';
         item_s.left = '0';
         item_s.zIndex = '2002';
-        
         item_s.color = 'white';
         item_s.backgroundColor = '#121212';
         item_s.border = 'none';
         item_s.display = 'none';
         item_s.transitionDuration = '.1s';
     }
-    
     btnLC.textContent = 'Link Converter';
-    btnLC_s.width = '8%';  
-    btnLC_s.margin = '2.7%';
-    btnLC_s.marginLeft = '6%';
+    btnLC_s.width = '16vh';  
+    btnLC_s.margin = '4vh';
+    btnLC_s.marginLeft = '19vh';
     
     btnAB.textContent = 'About:Blank Embedder';
-    btnAB_s.width = '12%'; 
-    btnAB_s.margin = '5.3%';
-    btnAB_s.marginLeft = '6%';
+    btnAB_s.width = '24vh'; 
+    btnAB_s.margin = '9.5vh';
+    btnAB_s.marginLeft = '19vh';
         
     btnTC.textContent = 'Tab Cloak';
-    btnTC_s.width = '6%'; 
-    btnTC_s.margin = '7.9%';
-    btnTC_s.marginLeft = '6%';
+    btnTC_s.width = '12vh'; 
+    btnTC_s.margin = '15vh';
+    btnTC_s.marginLeft = '19vh';
         
     btnHF.textContent = 'History Flooder';
-    btnHF_s.width = '8.5%'; 
-    btnHF_s.margin = '10.5%';
-    btnHF_s.marginLeft = '6%';
+    btnHF_s.width = '17vh'; 
+    btnHF_s.margin = '20.5vh';
+    btnHF_s.marginLeft = '19vh';
         
     btnWR.textContent = 'Random Article';
     btnWR_s.width = '16vh'; 
-    btnWR_s.margin = '13.1%';
-    btnWR_s.marginLeft = '6%';
+    btnWR_s.margin = '26vh';
+    btnWR_s.marginLeft = '19vh';
 
     btnKS.textContent = 'Kill Site';
     btnKS_s.width = '10vh'; 
-    btnKS_s.margin = '15.7%';
-    btnKS_s.marginLeft = '6%';
+    btnKS_s.margin = '31.5vh';
+    btnKS_s.marginLeft = '19vh';
 
     btnTS.textContent = 'Tab Spam';
     btnTS_s.width = '12vh';
-    btnTS_s.margin = '18.3%';
-    btnTS_s.marginLeft = '6%';
+    btnTS_s.margin = '37vh';
+    btnTS_s.marginLeft = '19vh';
 
-    tabBtn.textContent = '+';
-    btnTa_s.fontSize = '3vh';
-    btnTa_s.width = '4vh'; 
-    btnTa_s.height = '4vh'; 
-    btnTa_s.position = 'fixed';
-    btnTa_s.top = '0'; 
-    btnTa_s.left = '0'; 
-    btnTa_s.zIndex = '2001';
-    btnTa_s.margin = '.25%';
-    btnTa_s.marginTop = '95.5vh';
-    btnTa_s.color = 'white';
-    btnTa_s.backgroundColor = 'black';
-    btnTa_s.border = 'none';
-    btnTa_s.opacity = '.5';
-    btnTa_s.transitionDuration = '.1s';
+    newBtn.textContent = '+';
+    new_s.fontSize = '3vh';
+    new_s.width = '4vh'; 
+    new_s.height = '4vh'; 
+    new_s.position = 'fixed';
+    new_s.top = '0'; 
+    new_s.left = '0'; 
+    new_s.zIndex = '2001';
+    new_s.margin = '.25%';
+    new_s.marginTop = '95.5vh';
+    new_s.color = 'white';
+    new_s.backgroundColor = 'black';
+    new_s.border = 'none';
+    new_s.opacity = '.5';
+    new_s.transitionDuration = '.1s';
 
     window.onbeforeunload = confirmExit;
     function confirmExit() {
